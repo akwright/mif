@@ -1,13 +1,13 @@
 {
-  "name": "fastshell",
-  "title": "Fiercely quick and opinionated front-ends",
-  "author": "Hossein Karami",
-  "url": "https://HosseinKarami.github.io/fastshell",
-  "version": "1.0.3",
+  "name": "mif",
+  "title": "Mission Increase Foundation - The Gathering landing page.",
+  "author": "Five Q",
+  "url": "http://fiveq.com",
+  "version": "1.0",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "http://github.com/HosseinKarami/fastshell.git"
+    "url": "http://github.com/akwright/mif.git"
   },
   "devDependencies": {
     "browser-sync": "^1.6.5",

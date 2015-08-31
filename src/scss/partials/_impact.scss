@@ -1,0 +1,138 @@
+.impact {
+  padding-top: 80px;
+  background: #a2c6d5 url('../img/impact-bg.jpg') no-repeat top;
+  background-size: cover;
+  text-align: center;
+}
+  .impact .contain {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .impact h2 {
+    margin: 0;
+    font-size: 4.5rem;
+    letter-spacing: -.05em;
+    line-height: 1.2;
+  }
+
+  .impact p {
+    width: 85%;
+    max-width: 725px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 600;
+
+    @media (min-width: 450px) {
+      width: 70%;
+    }
+  }
+
+
+.city-item {
+  position: relative;
+
+  &:first-of-type .item-image {
+    background: url('../img/city-1.jpg') no-repeat center;
+    background-size: cover;
+  }
+
+  &:last-of-type .item-image {
+    background: url('../img/city-2.jpg') no-repeat center;
+    background-size: cover;
+  }
+
+  &:first-of-type {
+    margin-top: 4em;
+  }
+
+  &:last-of-type {
+    .item-image,
+    .item-info {
+      position: relative;
+      z-index: $zindex-base + 1;
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: -30px;
+      width: 993px;
+      max-width: 100%;
+      height: 95px;
+
+      background: url('../img/shadow.png') no-repeat center;
+      z-index: $zindex-base;
+
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (min-width: 670px) {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .item-image {
+    height: 300px;
+
+    @media (min-width: 670px) and (max-width: 799px) {
+      flex-basis: 40%;
+    }
+
+    @media (min-width: 670px) {
+      height: 396px;
+    }
+  }
+
+  .item-image,
+  .item-info {
+    @media (min-width: 800px) {
+      flex: 0 1 50%;
+    }
+  }
+
+  .item-info {
+    padding-top: 55px;
+    background: #fff;
+
+    @media (min-width: 670px) and (max-width: 799px) {
+      flex-basis: 60%;
+    }
+  }
+    .item-info h3 {
+      margin: 0;
+      font-size: 2.6rem;
+      font-weight: 800;
+      letter-spacing: .25em;
+      line-height: 1.4;
+      text-transform: uppercase;
+    }
+
+    .item-info p {
+      width: 80%;
+      font-weight: 400;
+    }
+
+    .item-info a {
+      margin-top: .75em;
+      margin-bottom: 4em;
+      border: 1px solid $impact-green;
+      color: $impact-green;
+      font-size: 2rem;
+
+      @media (min-width: 670px) {
+        margin-bottom: 0;
+      }
+
+      &:hover {
+        background: $impact-green;
+        color: white;
+      }
+    }
+
+  &.image-right {
+    flex-direction: row-reverse;
+  }
+}

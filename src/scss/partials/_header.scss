@@ -1,10 +1,35 @@
 .header {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: auto;
+  max-height: 92px;
 
+  background: rgba(48,62,72,.89);
+  z-index: $zindex-base+2;
 }
-.logo {
-  margin: -58px 0 0 -100px;
-  @include position(absolute, 50% 0 0 50%);
-  img {
-
+  .header .contain {
+    @extend .clear;
   }
-}
+
+    .logo {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      float: left;
+      width: 65%;
+
+      @media (min-width: 450px) {
+        width: auto;
+      }
+
+      a {
+        display: block;
+      }
+
+      img {
+        display: block;
+        height: auto;
+        width: 100%;
+        max-width: 100%;
+      }
+    }

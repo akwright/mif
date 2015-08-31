@@ -1,0 +1,14 @@
+.map {
+  padding-top: 50px;
+  padding-bottom: 70px;
+  background: $map-bg;
+  text-align: center;
+
+  @media (min-width: 670px) {
+    padding-top: 80px;
+    padding-bottom: 100px;
+  }
+}
+  .map h4 {
+    color: #fff;
+  }

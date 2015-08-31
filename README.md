@@ -1,5 +1,5 @@
-# FastShell
-[![Build Status](https://travis-ci.org/HosseinKarami/fastshell.png?branch=master)](https://travis-ci.org/HosseinKarami/fastshell)
+# MIF
+## Built on FastShell
 
 inspired by [FireShell](http://getfireshell.com)
 Fiercely quick front-end boilerplate and workflows.

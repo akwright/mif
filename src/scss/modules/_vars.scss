@@ -1,3 +1,15 @@
-$base : #F7F6F0;
-$darken : darken(#F7F6F0 , 30%);
-$back: darken(#F7F6F0, 40%);
+$body-color: #3c4145;
+$heading-dark: #4e5358;
+$dark-blue: #303e48;
+$deep-blue: #202c34;
+
+$header-bg: $dark-blue;
+$map-bg: $dark-blue;
+$footer-bg: $deep-blue;
+
+$impact-green: #80bd01;
+
+$museo: "Museo Slab", Rockwell, serif;
+$proxima: "Proxima Nova", "Open Sans", "Gill Sans MT", "Gill Sans", Corbel, Arial, sans-serif;
+
+$zindex-base: 1;

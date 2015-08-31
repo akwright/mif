@@ -1,18 +1,32 @@
 * {
   box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
   font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing:grayscale;
 }
 html {
   font-size: 62.5%;
-  background: radial-gradient(ellipse at center, $base 0, $darken 80%, $back 100%);
 }
 body {
-  font: 300 13px/1.6 'Helvetica Neue', Helvetica, Arial;
+  font: 400 1.6em/1.75 "Proxima Nova", "Open Sans", "Gill Sans MT", "Gill Sans", Corbel, Arial, sans-serif;
   color: #444;
   transition: all .4s .3s ease-in;
 }
 body,html{
 	min-height: 100vh;
-	overflow: hidden;
+}
+
+.contain {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-left: 1em;
+  padding-right: 1em;
+
+  @media (min-width: 1000px) {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }

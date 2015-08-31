@@ -1,9 +1,48 @@
-(function ($, window, document, undefined) {
+(function (window, document, undefined) {
 
   'use strict';
 
-  $(function () {
-    // FastShell
-  });
+  (function () {
+    var mobileTrigger  = document.querySelector('.js-nav-toggle'),
+        mobileNav      = document.querySelector('.js-nav'),
+        inputs         = document.querySelectorAll('.input'),
+        inputOnClass   = "is-active",
+        inputShowClass = "is-visible";
 
-})(jQuery, window, document);
+    mobileTrigger.addEventListener("click", function() {
+      mobileNav.classList.toggle('is-visible');
+    });
+
+    function toggleInputs(ele) {
+      var label = ele.previousSibling;
+
+      if (ele.value !== "") {
+        label.classList.add(inputShowClass);
+      } else {
+        label.classList.remove(inputShowClass);
+      }
+    }
+
+    for (var i = 0; i < inputs.length; i++) {
+      inputs[i].addEventListener("keyup", function() {
+        toggleInputs(this);
+      });
+
+      inputs[i].addEventListener("focus", function() {
+        var label = this.previousSibling;
+        console.log(label);
+        console.log(this);
+        label.classList.add(inputOnClass);
+      });
+
+      inputs[i].addEventListener("blur", function() {
+        var label = this.previousSibling;
+        label.classList.remove(inputOnClass);
+      });
+
+      toggleInputs(inputs[i]);
+    }
+
+  })();
+
+})(window, document);
