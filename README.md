@@ -2,7 +2,7 @@
 ## Landing page for Mission Increase Foundation - the Gathering event.
 
 
-## Project setup and Gulp installation
+### Project setup and Gulp installation
 You'll need to install Node and Gulp. Here's a walk-through of how to get a project up and running in minutes. Once Node and Gulp are installed all future projects running Gulp are instant.
 
 1. Install [Node.js](http://nodejs.org/download), [Sass](http://sass-lang.com/tutorial.html) and [Git](http://git-scm.com) on your machine. If you're a Windows user you'll also need to install [Ruby](http://rubyinstaller.org/downloads).
@@ -13,7 +13,7 @@ You'll need to install Node and Gulp. Here's a walk-through of how to get a proj
 6. From now on, just run `gulp` in your project directory to automatically run MIF's Gulp tasks.
 
 
-## Built on FastShell
+### Built on FastShell
 
 Built on [FireShell](http://getfireshell.com)
 Fiercely quick front-end boilerplate and workflows.
