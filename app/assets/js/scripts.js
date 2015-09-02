@@ -3,7 +3,7 @@
  * Mission Increase Foundation - The Gathering landing page.
  * http://fiveq.com
  * @author Five Q
- * @version 1.0
+ * @version 1.0.1
  * Copyright 2015. MIT licensed.
  */
 (function (window, document, undefined) {

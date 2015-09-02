@@ -12,3 +12,15 @@
   .map h4 {
     color: #fff;
   }
+
+  .map .button {
+    padding: .5em 2em;
+    background: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+
+    &:hover {
+      background: #fff;
+      color: $impact-green;
+    }
+  }

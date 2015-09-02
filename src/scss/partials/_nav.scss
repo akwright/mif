@@ -84,7 +84,8 @@
     cursor: pointer;
 
     &:active {
-      transform: translateY(-50%), scale(.9);
+      transform-origin: center;
+      transform: translateY(-50%), scale(.95);
     }
 
     span {
