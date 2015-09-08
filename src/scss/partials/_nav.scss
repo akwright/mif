@@ -1,6 +1,6 @@
 .nav {
 
-  @media (min-width: 800px) {
+  @media (min-width: 900px) {
     padding-top: 32px;
     float: right;
   }
@@ -11,7 +11,7 @@
     list-style: none;
     display: none;
 
-    @media (min-width: 800px) {
+    @media (min-width: 900px) {
       display: block;
     }
 
@@ -44,19 +44,26 @@
 
   .nav li {
     display: inline-block;
-    margin-right: 23px;
-
-    &:last-of-type { margin-right: 0; }
 
     @media (min-width: 900px) {
-      margin-right: 46px;
+      margin-right: 18px;
+
+      &:last-of-type { margin-right: 0; }
+    }
+
+    @media (min-width: 950px) {
+      margin-right: 23px;
+    }
+
+    @media (min-width: 1000px) {
+      margin-right: 36px;
     }
   }
 
   .nav a {
     color: white;
     font-weight: 800;
-    font-size: .9375em;
+    font-size: .875em;
     letter-spacing: .15em;
     text-decoration: none;
     text-transform: uppercase;
@@ -73,20 +80,20 @@
       transform: scale(.95);
       transition: transform .1s linear;
     }
+
+    @media (min-width: 1000px) {
+      font-size: .9375em;
+    }
   }
 
-  .nav-toggle {
+  .nav a.nav-toggle {
     display: block;
     position: absolute;
     top: 50%;
     right: 1em;
+    font-size: .9375em;
     transform: translateY(-50%);
     cursor: pointer;
-
-    &:active {
-      transform-origin: center;
-      transform: translateY(-50%), scale(.95);
-    }
 
     span {
       font-family: Helvetica, sans-serif;
@@ -94,7 +101,7 @@
       font-smoothing: none;
     }
 
-    @media (min-width: 800px) {
+    @media (min-width: 900px) {
       display: none;
     }
   }

@@ -463,7 +463,7 @@ h4 {
     width: 100%;
     max-width: 100%; }
 
-@media (min-width: 800px) {
+@media (min-width: 900px) {
   .nav {
     padding-top: 32px;
     float: right; } }
@@ -473,7 +473,7 @@ h4 {
   padding: 0;
   list-style: none;
   display: none; }
-  @media (min-width: 800px) {
+  @media (min-width: 900px) {
     .nav ul {
       display: block; } }
   .nav ul.is-visible {
@@ -497,18 +497,23 @@ h4 {
         color: rgba(48, 62, 72, 0.89); }
 
 .nav li {
-  display: inline-block;
-  margin-right: 23px; }
-  .nav li:last-of-type {
-    margin-right: 0; }
+  display: inline-block; }
   @media (min-width: 900px) {
     .nav li {
-      margin-right: 46px; } }
+      margin-right: 18px; }
+      .nav li:last-of-type {
+        margin-right: 0; } }
+  @media (min-width: 950px) {
+    .nav li {
+      margin-right: 23px; } }
+  @media (min-width: 1000px) {
+    .nav li {
+      margin-right: 36px; } }
 
 .nav a {
   color: white;
   font-weight: 800;
-  font-size: .9375em;
+  font-size: .875em;
   letter-spacing: .15em;
   text-decoration: none;
   text-transform: uppercase;
@@ -524,29 +529,26 @@ h4 {
             transform: scale(.95);
     transition: -webkit-transform .1s linear;
     transition: transform .1s linear; }
+  @media (min-width: 1000px) {
+    .nav a {
+      font-size: .9375em; } }
 
-.nav-toggle {
+.nav a.nav-toggle {
   display: block;
   position: absolute;
   top: 50%;
   right: 1em;
+  font-size: .9375em;
   -webkit-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
           transform: translateY(-50%);
   cursor: pointer; }
-  .nav-toggle:active {
-    -webkit-transform-origin: center;
-        -ms-transform-origin: center;
-            transform-origin: center;
-    -webkit-transform: translateY(-50%), scale(.95);
-        -ms-transform: translateY(-50%), scale(.95);
-            transform: translateY(-50%), scale(.95); }
-  .nav-toggle span {
+  .nav a.nav-toggle span {
     font-family: Helvetica, sans-serif;
     -webkit-font-smoothing: none;
     font-smoothing: none; }
-  @media (min-width: 800px) {
-    .nav-toggle {
+  @media (min-width: 900px) {
+    .nav a.nav-toggle {
       display: none; } }
 
 .splash {
@@ -808,6 +810,21 @@ h4 {
   .map .button:hover {
     background: #fff;
     color: #80bd01; }
+
+.testimonial {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  text-align: center; }
+  .testimonial h4 {
+    margin-top: 0;
+    line-height: 1.5; }
+  @media (min-width: 640px) {
+    .testimonial {
+      padding-top: 80px;
+      padding-bottom: 80px; } }
+  .testimonial img, .testimonial video, .testimonial iframe {
+    display: block;
+    max-width: 100%; }
 
 .footer {
   padding: 30px 0;
