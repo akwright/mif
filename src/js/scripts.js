@@ -61,11 +61,13 @@
   'use strict';
 
   $(function () {
-    var $links = $('.js-nav a');
+    var $links      = $('.js-nav a'),
+        $mobileNav  = $('.js-nav');
 
     $links.each(function() {
       $(this).on('click', function(e) {
         $('html, body').stop().animate({ scrollTop: $($(this).attr('href')).offset().top }, 500);
+        $mobileNav.removeClass('is-visible');
         e.preventDefault();
       });
     });
