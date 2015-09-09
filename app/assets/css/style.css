@@ -405,6 +405,39 @@ h4 {
 :-ms-input-placeholder {
   color: rgba(255, 255, 255, 0.6); }
 
+.form-modal {
+  padding: 2em;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  max-width: 500px;
+  background-color: #fff;
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.13), 0 10px 40px rgba(0, 0, 0, 0.09);
+  -webkit-transform: translate(-50%, -75%);
+      -ms-transform: translate(-50%, -75%);
+          transform: translate(-50%, -75%);
+  transition: .25s ease;
+  z-index: 3; }
+  .form-modal.is-visible {
+    opacity: 1;
+    pointer-events: all;
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%); }
+  .form-modal h3 {
+    margin-top: 0;
+    margin-bottom: 1em;
+    color: #80bd01;
+    font-size: 2em;
+    line-height: 1; }
+  .form-modal p {
+    margin-top: .5em;
+    margin-bottom: .5em;
+    line-height: 1.5; }
+
 @media print {
   * {
     background: transparent !important;
