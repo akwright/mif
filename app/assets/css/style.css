@@ -844,6 +844,59 @@ h4 {
     background: #fff;
     color: #80bd01; }
 
+.filter-bar {
+  padding: 25px 1em;
+  background-color: #fff;
+  color: #4e5358;
+  text-align: left; }
+  @media (min-width: 940px) {
+    .filter-bar {
+      padding-left: 0;
+      padding-right: 0;
+      text-align: center; } }
+
+.filter-chapters, .filter-zip, .filter-radius {
+  display: inline-block;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 1em;
+  vertical-align: top; }
+
+.filter-chapters, .filter-zip {
+  margin-right: 2em; }
+
+@media (min-width: 940px) {
+  .filter-zip {
+    margin-right: 0; } }
+
+.filter-chapters select, .filter-zip input, .filter-radius select {
+  display: block;
+  background-color: #f0f0f0;
+  border: 1px solid #cdcdcd;
+  text-align: left; }
+  @media (min-width: 940px) {
+    .filter-chapters select, .filter-zip input, .filter-radius select {
+      display: inline-block; } }
+
+@media (min-width: 940px) {
+  .filter-chapters select {
+    margin-left: 1em; } }
+
+.filter-zip input {
+  margin-right: 1em;
+  padding: .2em .3em; }
+  @media (min-width: 940px) {
+    .filter-zip input {
+      margin-left: .5em; } }
+
+@media (min-width: 940px) {
+  .filter-radius select {
+    margin-left: .3em; } }
+
+.filter-show {
+  display: block;
+  font-weight: 700; }
+
 .testimonial {
   padding-top: 40px;
   padding-bottom: 40px;

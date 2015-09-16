@@ -11,7 +11,10 @@
     <link href="//www.google-analytics.com" rel="dns-prefetch">
     <link href="//ajax.googleapis.com" rel="dns-prefetch">
     <link href="assets/css/style.min.css" rel="stylesheet">
+    <link href="http://beta.missionincrease.org/views/gathering/assets/css/overrides.css" rel="stylesheet">
     <link rel="shortcut icon" href="favicon.ico?v=1" />
+
+    <link rel="stylesheet" type="text/css" href="http://beta.missionincrease.org/js/css/jquery.loadmask.css">
 
     <script>
       (function(d) {
@@ -110,7 +113,9 @@
 
           <div class="map-object">
             <div class="map-controls">
-              
+              <div align="center">
+                <div id="map-embed" style="width: 100%; height: 100%;"></div>
+              </div>              
             </div>
           </div>
 
@@ -137,6 +142,14 @@
     <script src="assets/components/jquery/jquery.min.js"></script>
     <script src="assets/js/scripts.min.js"></script>
 
+    <script src="http://beta.missionincrease.org/js/swfobject.js"></script>
+    <script src="http://beta.missionincrease.org/js/jquery.loadmask2.js"></script>
+    <script src="http://beta.missionincrease.org/highcharts/js/highcharts.js"></script>
+    <script src="http://beta.missionincrease.org/views/Embed/ministryMap.js"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyApGLoDV9cj2d9mbwVX-AjNfhbOoYjDy2w&sensor=true"></script>
+    <script src="http://beta.missionincrease.org/js/ext/source/widgets/markerClusterV3.js"></script>
+    <script src="http://beta.missionincrease.org/js/jquery.inputMask.js"></script>
+
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
         (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
@@ -145,6 +158,146 @@
         e.src='//www.google-analytics.com/analytics.js';
         r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
         ga('create','UA-XXXXX-X');ga('send','pageview');
+    </script>
+
+    <script>
+
+      (function(){
+        // donors video
+        var flashvars = {};
+        //flashvars.src = 'http://media.mif.org:8134/vod/MIF Donor Video.f4m';
+        flashvars.src = 'http://media.mif.org:8134/vod/MIF%2015th%20Anniversary%20-%20Bill%20Russell.f4m';
+        flashvars.clipStartTime = 17;
+        flashvars.autoPlay = 'false';
+        flashvars.wmode = "opaque";
+        flashvars.controlBarAutoHide = true;
+
+        var params = {};
+        params.allowFullScreen = 'true';
+
+        var attributes = {};
+        attributes.wmode = "opaque";
+        attributes.id = 'strobeMediaPlaybackId';
+
+        swfobject.embedSWF('/includes/StrobeMediaPlayback.swf?v=3', 'no-flash-content', '100%', '562', '10.1.0', '{}', flashvars, params,attributes);
+      })();
+      
+
+
+      (function () {
+        var calledBack = false; // use to get around Firefox bug where if the user chooses 'not now' or ignores the request the failure/success functions never fire
+        var mapInited = false;
+
+        var initMap = function(zipCode, radius){
+          if(mapInited){
+            return;
+          }
+
+          mapInited = true;
+          window.mifMapEmbed.init({
+            embedTo: "map-embed",
+            loadGMaps: false, // load the google maps jscripts... if your page already loads this then set to false
+            branchID: zipCode == "" ? 1 : 0, // start at pdx
+            zipCode: zipCode == "" ? "" : zipCode,
+            radius: zipCode == "" ? "" : radius,
+            hideCharts: true,
+            clusterOrphans: false,
+            showMIFOrgs: false
+          });
+        }
+
+        var loadZipCode = function (loc) {
+          calledBack = true;
+          //var param = { latitude: loc.coords.latitude, longitude: loc.coords.longitude };
+          $.ajax({
+              method: "POST",
+              dataType: "jsonp",
+              jsonp: "callback",
+              url: 'http://beta.missionincrease.org/views/embed/ajax/coord2Zip.cfm?latitude=' + loc.coords.latitude + '&longitude=' + loc.coords.longitude,
+              //data: JSON.stringify(param),
+              contentType: "application/json; charset=utf-8",
+              dataFilter: function (data) { return data; },
+              success: function (data) {
+                if(data.SUCCESS == 1 && data.ZIPCODE != ""){
+                  initMap(data.ZIPCODE, 25);
+                }
+                else{
+                  initMap("");
+                }
+              },
+              error: function (a, b, c) {
+                  // something went wrong....
+                  initMap("");
+              }
+          });
+        }
+
+        $("#phone").mask("(999) 999-9999");
+
+        if (navigator.geolocation) {
+          var geoOptions = {
+            enableHighAccuracy: false,
+            timeout: 5000, // Wait 5 seconds
+            maximumAge: 300000 //  Valid for 5 minutes
+          };
+          navigator.geolocation.getCurrentPosition(loadZipCode, function(){
+            // on failure
+            calledBack = true;
+            initMap("");
+          });
+          setTimeout(function () {
+            if(!calledBack){
+              initMap("");
+            }
+          }, 4500);
+        }
+        else{
+          initMap("");
+        }
+
+        // contact form..
+        $("#btnSubmitContact").click(function(){
+          var name = $("#name").val();
+          var email = $("#email").val();
+          var phone = $("#phone").val();
+
+          if(name == "" || email == "" || phone == ""){
+            $("#warningContact").fadeTo(500, 1);
+            setTimeout(function(){
+              $("#warningContact").fadeTo(500, 0);
+            }, 4500);
+          }
+          else{
+            // ajax...
+            var param = {
+              name: name,
+              phone: phone,
+              email: email
+            }
+            $.ajax({
+              method: "POST",
+              url: 'assets/server/saveResponse.cfm',
+              data: param,
+              //contentType: "application/json; charset=utf-8",
+              //dataFilter: function (data) { return data; },
+              success: function (data) {
+                //$("#name").val("");
+                //$("#email").val("");
+                //$("#phone").val("");
+                
+                $("#successContact").fadeTo(500, 1);
+                setTimeout(function(){
+                  $("#successContact").fadeTo(500, 0);
+                }, 4500);
+              },
+              error: function (a, b, c) {
+                  // something went wrong....
+                  
+              }
+          });
+          }
+        });
+      })();
     </script>
 
   </body>
